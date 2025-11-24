@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RecruitAI - Assistant Recruteur</title>
+    
+    <!-- Fonts: Inter (Body) & Space Grotesk (Titres) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                dark: '#0e3a70',       // Bleu foncé Siment
+                violet: '#9a4db8',     // Violet Siment
+                teal: '#36d6b7',       // Vert d'eau Siment
+                bg: '#f5f6fa',         // Gris très clair Siment
+                text: '#23272f',       // Gris foncé Siment
+                divider: '#e5e7eb',    // Gris clair
+              }
+            },
+            backgroundImage: {
+              'brand-gradient': 'linear-gradient(135deg, #0e3a70 0%, #9a4db8 100%)',
+              'brand-gradient-hover': 'linear-gradient(135deg, #164e91 0%, #ac5bcc 100%)',
+              'subtle-pattern': 'radial-gradient(#9a4db8 0.5px, transparent 0.5px), radial-gradient(#0e3a70 0.5px, transparent 0.5px)',
+            },
+            backgroundSize: {
+              'subtle-pattern': '20px 20px',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f5f6fa;
+      }
+      .dark body {
+        background-color: #111827;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #475569;
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+      }
+      .dark .glass-card {
+        background: rgba(31, 41, 55, 0.95);
+      }
+
+      /* PRINT STYLES - Force PDF Layout */
+      @media print {
+        @page { margin: 1cm; size: A4; }
+        body { 
+          background: white !important; 
+          color: black !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        /* Hide UI elements */
+        nav, button, .no-print, ::-webkit-scrollbar { display: none !important; }
+        
+        /* Reset containers */
+        #root > div > div { background: white !important; min-height: auto !important; }
+        
+        /* Analysis Result Modal overrides */
+        .fixed.inset-0 { 
+          position: relative !important; 
+          inset: auto !important;
+          background: white !important;
+          padding: 0 !important;
+          overflow: visible !important;
+          display: block !important;
+        }
+        .bg-white, .dark\:bg-gray-900, .dark\:bg-gray-800 {
+          background-color: white !important;
+          color: black !important;
+          box-shadow: none !important;
+          border: none !important;
+        }
+        
+        /* Typography fix */
+        h1, h2, h3, h4 { color: #0e3a70 !important; }
+        p, li, span { color: #333 !important; }
+        
+        /* Grid adjustments */
+        .grid-cols-1.lg\:grid-cols-3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Badges */
+        .bg-brand-teal\/10 { background-color: #f0fdfa !important; border: 1px solid #36d6b7 !important; color: #0f766e !important; }
+        .bg-red-50 { background-color: #fef2f2 !important; border: 1px solid #fecaca !important; color: #991b1b !important; }
+        .bg-green-50 { background-color: #f0fdf4 !important; border: 1px solid #bbf7d0 !important; color: #166534 !important; }
+        
+        /* Force page breaks */
+        .page-break { page-break-before: always; }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

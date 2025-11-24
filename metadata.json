@@ -1,0 +1,5 @@
+{
+  "name": "RecruitAI - Agent Recruteur",
+  "description": "An intelligent recruiting assistant that analyzes PDF resumes against job descriptions to score, rank, and recommend candidates using Gemini AI.",
+  "requestFramePermissions": []
+}
